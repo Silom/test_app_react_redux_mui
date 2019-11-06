@@ -16,6 +16,7 @@ import StartBorderIcon from '@material-ui/icons/StarBorder'
 import { addMassage } from '../actions/notifications'
 import { toggleFav } from '../actions/courses'
 import { Course } from '../store/module/courses'
+import { TestIds } from '../consts'
 
 interface Props {
   courses: any[],
@@ -29,10 +30,8 @@ class DashboardComp extends React.Component<Props> {
   }
   
   doFavAction(course: Course) {
-    // It will be a string sooner or later
     const message = !course.wishListFlag ? 'Added to My Favorite Courses' : 'Removed from Favorites'
-    
-    this.props.toggleFav(course.courseId + '')
+    this.props.toggleFav(course.courseId)
     this.props.addMassage(message)
   }
 
@@ -44,7 +43,7 @@ class DashboardComp extends React.Component<Props> {
     if (this.props.courses) {
       this.props.courses.map(c => {
         listEntriesTpl.push(
-          <ListItem key={c.courseId}>
+          <ListItem key={c.courseId} data-testid={TestIds.courseList.entry}>
             <ListItemAvatar>
               <Avatar>
                 <FolderIcon />
@@ -52,7 +51,7 @@ class DashboardComp extends React.Component<Props> {
             </ListItemAvatar>
             <ListItemText primary={c.courseName} />
             <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete" onClick={() => this.doFavAction(c)}>
+              <IconButton data-testid={TestIds.courseList.starIcon} edge="end" aria-label="delete" onClick={() => this.doFavAction(c)}>
                 { c.wishListFlag ? <StartIcon /> : <StartBorderIcon /> }
               </IconButton>
             </ListItemSecondaryAction>
@@ -62,8 +61,8 @@ class DashboardComp extends React.Component<Props> {
     }
 
     return (
-      <Card>
-        <List dense>
+      <Card data-testid={TestIds.app.dashboard}>
+        <List dense data-testid={TestIds.courseList.list}>
           { listEntriesTpl }
         </List>
       </Card>

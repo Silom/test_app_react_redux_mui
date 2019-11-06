@@ -17,6 +17,7 @@ import MainNavigation from './MainNavigation'
 import { NotificationState } from '../../store/module/notifications'
 
 import { messageTimeout } from '../../actions/notifications'
+import { TestIds } from '../../consts'
 
 // TODO Move to atoms
 interface ElevationScrollProps {
@@ -67,6 +68,7 @@ class LayoutComp extends React.Component<Props> {
           </Box>
         </Container>
         <Snackbar
+          data-testid={TestIds.app.notification}
           open={!!activeNotification}
           autoHideDuration={5000}
           message={<span>{ activeNotification ? activeNotification.message : '' }</span>}
