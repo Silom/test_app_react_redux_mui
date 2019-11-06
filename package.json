@@ -5,23 +5,28 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run start:dev",
-    "start:dev": "./node_modules/.bin/webpack-dev-server --inline --config build/webpack.conf.dev.js",
-    "test": ""
+    "start:dev": "npx webpack-dev-server --inline --config build/webpack.conf.dev.js",
+    "test": "npx cypress run --spec 'cypress/integration/**/*.feature'",
+    "test:watch": "npx cypress open"
   },
   "author": "Silom",
   "license": "ISC",
   "devDependencies": {
     "ts-loader": "^6.2.1",
-    "typescript": "^3.6.4",
+    "typescript": "^3.7.2",
     "webpack-dev-server": "^3.9.0"
   },
   "dependencies": {
+    "@cypress/webpack-preprocessor": "^4.1.0",
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",
+    "@types/jest": "^24.0.22",
+    "@types/mocha": "^5.2.7",
     "@types/react-dom": "^16.9.3",
     "@types/react-redux": "^7.1.5",
     "@types/react-router-dom": "^5.1.2",
     "copy-webpack-plugin": "^5.0.4",
+    "cypress": "^3.6.0",
     "html-webpack-plugin": "^3.2.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",

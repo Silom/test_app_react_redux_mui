@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "outDir": "./dist/",
-    "moduleResolution": "node",
     "removeComments": true,
     "noResolve": false,
     "noImplicitAny": false,
@@ -9,9 +8,13 @@
     "module": "commonjs",
     "target": "es6",
     "jsx": "react",
-    "allowJs": true
+    "allowJs": true,
+    "resolveJsonModule": true
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
-    "./node_modules/**/*"
+    "node_modules"
   ]
 }
