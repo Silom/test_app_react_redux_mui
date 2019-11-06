@@ -19,7 +19,7 @@ import { Course } from '../store/module/courses'
 
 interface Props {
   courses: any[],
-  addMassage: typeof addMassage,
+  addMassage: typeof addMassage
   toggleFav: typeof toggleFav
 }
 

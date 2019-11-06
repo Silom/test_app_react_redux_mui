@@ -14,8 +14,7 @@ import store from './store'
 import { Layout } from './components/organism'
 import { Dashboard, About } from './area'
 
-interface AppProps {
-}
+interface AppProps {}
 
 class App extends React.Component<AppProps> {
   constructor(props: any) {

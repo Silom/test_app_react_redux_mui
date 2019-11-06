@@ -1,10 +1,10 @@
 export interface Notification {
-  message: string,
+  message: string
   time: number
 }
 
 export interface NotificationState {
-  notifications: Notification[],
+  notifications: Notification[]
   activeNotification: Notification
 }
 

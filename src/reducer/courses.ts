@@ -8,8 +8,7 @@ export const courses = function (state = <CourseState>defaultState, action: Redu
     case TOGGLE_FAV:
       for (let i = 0; i < state.courseList.length; i++) {
         const element = state.courseList[i]
-        // String here as well, since id will be some sort of UUID
-        if (element.courseId+'' === action.payload) {
+        if (element.courseId === action.payload) {
           const courseList = [ ...state.courseList ]
           courseList[i].wishListFlag = !courseList[i].wishListFlag
           return { ...state, courseList: [ ...courseList ] }

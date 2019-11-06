@@ -23,36 +23,39 @@ interface ElevationScrollProps {
   window?: () => Window
   children: React.ReactElement
 }
+
 function ElevationScroll(props: ElevationScrollProps) {
   const { children, window } = props
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
-    target: window ? window() : undefined,
-  });
+    target: window ? window() : undefined
+  })
 
   return React.cloneElement(children, {
-    elevation: trigger ? 4 : 0,
-  });
+    elevation: trigger ? 4 : 0
+  })
 }
 
 interface Props {
   notifications: NotificationState
-  messageTimeout: typeof messageTimeout,
+  messageTimeout: typeof messageTimeout
   window?: () => Window
   children: React.ReactElement
 }
+
 class LayoutComp extends React.Component<Props> {
   constructor(props) {
     super(props)
   }
 
   render() {
+    const { children, window } = this.props
     const activeNotification = this.props.notifications.activeNotification
 
     return (
       <React.Fragment>
-        <ElevationScroll {...this.props}>
+        <ElevationScroll {...{ window, children }}>
           <AppBar color="default">
             <MainNavigation />
           </AppBar>
@@ -60,7 +63,7 @@ class LayoutComp extends React.Component<Props> {
         <Toolbar />
         <Container>
           <Box my={2}>
-            { this.props.children }
+            { children }
           </Box>
         </Container>
         <Snackbar

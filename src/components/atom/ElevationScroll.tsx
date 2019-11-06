@@ -1,4 +1,5 @@
 import * as React from 'react'
+
 import useScrollTrigger from '@material-ui/core/useScrollTrigger'
 
 interface Props {
@@ -6,16 +7,14 @@ interface Props {
   children: React.ReactElement
 }
 
-class ElevationScroll extends React.Component {
-  constructor(props: Props) {
+class ElevationScroll extends React.Component<Props> {
+  constructor(props) {
     super(props)
   }
 
   render() {
-    const { children, window } = this.props as Props
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
+    const { children, window } = this.props
+
     const trigger = useScrollTrigger({
       disableHysteresis: true,
       threshold: 0,
@@ -23,7 +22,7 @@ class ElevationScroll extends React.Component {
     })
 
     return React.cloneElement(children, {
-      elevation: trigger ? 4 : 0,
+      elevation: trigger ? 4 : 0
     })
   }
 }
